@@ -56,6 +56,24 @@ class Grid {
 
     return output.join('');
   }
+
+  [Symbol.iterator]() {
+    let index = -1;
+    const grid = this.grid;
+    const rows = this.rows;
+
+    return {
+      next() {
+        index++;
+
+        return {
+          value: grid[index],
+          done: index >= rows
+        }
+      }
+    }
+  }
+
 }
 
 export default Grid;
