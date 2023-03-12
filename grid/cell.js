@@ -17,7 +17,7 @@ class Cell {
         if (!cell) {
             return;
         }
-        // console.log('==cell', cell.row, cell.column, cell);
+
         const key = `${cell.row}${cell.column}`;
 
         if (cell && !this.links[key]) {

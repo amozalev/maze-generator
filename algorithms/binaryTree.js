@@ -2,21 +2,21 @@ import Cell from "../grid/cell.js";
 
 class BinaryTree {
     constructor(grid) {
-        for (let i = 0; i < grid.rows; i++) {
-            for (let j = 0; j < grid.columns; j++) {
+        for (const row of grid.grid) {
+            for (const cell of row) {
                 const neighbors = [];
 
-                if (grid.grid[i][j].north) {
-                    neighbors.push(grid.grid[i][j].north);
+                if (cell.north) {
+                    neighbors.push(cell.north);
                 }
-                if (grid.grid[i][j].east) {
-                    neighbors.push(grid.grid[i][j].east);
+                if (cell.east) {
+                    neighbors.push(cell.east);
                 }
 
                 if (neighbors.length) {
                     const index = Math.floor(Math.random() * neighbors.length);
                     const neighbor = neighbors[index];
-                    grid.grid[i][j].link(neighbor);
+                    cell.link(neighbor);
                 }
             }
         }

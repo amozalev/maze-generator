@@ -22,12 +22,13 @@ class Grid {
     configureCells() {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.columns; j++) {
-                const [row, col] = [this.grid[i][j].row, this.grid[i][j].column];
+                const cell = this.grid[i][j];
+                const [row, col] = [cell.row, cell.column];
 
-                this.grid[i][j].north = row - 1 >= 0 ? this.grid[row - 1][col] : null;
-                this.grid[i][j].south = row + 1 < this.rows ? this.grid[row + 1][col] : null;
-                this.grid[i][j].west = col - 1 >= 0 ? this.grid[row][col - 1] : null;
-                this.grid[i][j].east = col + 1 < this.columns ? this.grid[row][col + 1] : null;
+                cell.north = row - 1 >= 0 ? this.grid[row - 1][col] : null;
+                cell.south = row + 1 < this.rows ? this.grid[row + 1][col] : null;
+                cell.west = col - 1 >= 0 ? this.grid[row][col - 1] : null;
+                cell.east = col + 1 < this.columns ? this.grid[row][col + 1] : null;
             }
         }
     }
@@ -35,13 +36,11 @@ class Grid {
     toString() {
         let output = [`+${'---+'.repeat(this.columns)}\n`];
 
-        for (let i = 0; i < this.rows; i++) {
+        for (const row of this.grid) {
             let top = ['|'];
             let bottom = ['+'];
 
-            for (let j = 0; j < this.columns; j++) {
-                const cell = this.grid[i][j];
-
+            for (const cell of row) {
                 const body = '   ';
                 const eastBoundary = cell.isLinked(cell.east) ? ' ' : '|';
                 top.push(`${body}${eastBoundary}`);
