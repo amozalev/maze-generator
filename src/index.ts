@@ -1,5 +1,5 @@
-import Grid from "./grid/grid.js";
-import BinaryTree from "./algorithms/binaryTree.js";
+import Grid from "./grid/grid";
+import BinaryTree from "./algorithms/binaryTree";
 
 const gridObj = new Grid(9, 9);
 const bt = new BinaryTree(gridObj);
