@@ -1,7 +1,5 @@
-import Grid from "./grid/grid";
-import BinaryTree from "./algorithms/binaryTree";
+import App from './app';
 
-const gridObj = new Grid(9, 9);
-const bt = new BinaryTree(gridObj);
-
-console.log(gridObj.toString());
+const app = new App();
+const appElem = document.querySelector('#app');
+appElem?.append(app.render());
