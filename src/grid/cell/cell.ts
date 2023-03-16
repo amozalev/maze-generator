@@ -1,4 +1,7 @@
+import './cell-style.css';
+
 class Cell {
+  element: any;
   row: number;
   column: number;
   links: { [key: string]: boolean } = {};
@@ -11,6 +14,8 @@ class Cell {
   constructor(row: number, column: number) {
     this.row = row;
     this.column = column;
+
+    this.render();
   }
 
   link(cell: Cell) {
@@ -61,6 +66,17 @@ class Cell {
     }
 
     return arr;
+  }
+
+  get template() {
+    return `<div class="cell"></div>`;
+  }
+
+  render() {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = this.template;
+
+    this.element = wrapper.firstElementChild;
   }
 }
 

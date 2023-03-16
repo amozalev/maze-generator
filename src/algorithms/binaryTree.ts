@@ -1,4 +1,4 @@
-import Grid from "../grid/grid";
+import Grid from "../grid/grid/grid";
 
 class BinaryTree {
   constructor(grid: Grid) {

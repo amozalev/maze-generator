@@ -1,6 +1,8 @@
-import Cell from "./cell";
+import Cell from "../cell/cell";
+import './grid-style.css';
 
 class Grid {
+  element: any;
   rows: number;
   columns: number;
   grid: Cell[][] = [];
@@ -10,6 +12,8 @@ class Grid {
     this.columns = columns;
     this.prepareGrid();
     this.configureCells();
+
+    this.render();
   }
 
   prepareGrid() {
@@ -72,6 +76,33 @@ class Grid {
         }
       }
     }
+  }
+
+  getRow(row: Cell[]) {
+    return `
+      <div class="row">
+        ${row.map(cell => cell.element.outerHTML).join('')}
+      </div>
+    `;
+  }
+
+  getRows() {
+    return this.grid.map(row => this.getRow(row)).join('');
+  }
+
+  get template() {
+    return `
+      <div class="grid">
+        ${this.getRows()}
+      </div>
+    `;
+  }
+
+  render() {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = this.template;
+
+    this.element = wrapper.firstElementChild;
   }
 
 }
