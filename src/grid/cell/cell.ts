@@ -22,8 +22,8 @@ class Cell {
     if (!cell) {
       return;
     }
-
-    const key = `${cell.row}${cell.column}`;
+    const {row, column} = cell;
+    const key = `${row}${column}`;
 
     if (cell && !this.links[key]) {
       this.links[key] = true;

@@ -78,24 +78,20 @@ class Grid {
     }
   }
 
-  getRow(row: Cell[]) {
-    return `
-      <div class="row">
-        ${row.map(cell => cell.element.outerHTML).join('')}
-      </div>
-    `;
-  }
-
-  getRows() {
-    return this.grid.map(row => this.getRow(row)).join('');
-  }
+  // getRow(row: Cell[]) {
+  //   return `
+  //     <div class="row">
+  //       ${row.map(cell => cell.element.outerHTML).join('')}
+  //     </div>
+  //   `;
+  // }
+  //
+  // getRows() {
+  //   return this.grid.map(row => this.getRow(row)).join('');
+  // }
 
   get template() {
-    return `
-      <div class="grid">
-        ${this.getRows()}
-      </div>
-    `;
+    return `<div class="grid" style="--columns:${this.columns};--rows:${this.rows};"> </div>`;
   }
 
   render() {
@@ -103,6 +99,12 @@ class Grid {
     wrapper.innerHTML = this.template;
 
     this.element = wrapper.firstElementChild;
+
+    for (const row of this.grid) {
+      for (const cell of row) {
+        this.element.append(cell.element);
+      }
+    }
   }
 
 }
