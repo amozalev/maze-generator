@@ -1,11 +1,8 @@
 .cell {
     width: 30px;
     height: 30px;
-    border-top: 1px solid grey;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
-    border-left: 1px solid grey;
-    /*box-sizing: border-box;*/
-    /*border-collapse: collapse;*/
+    border: 1px solid grey;
+    box-sizing: border-box;
+    border-collapse: collapse;
 
 }

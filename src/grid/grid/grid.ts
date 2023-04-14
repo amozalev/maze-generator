@@ -61,6 +61,25 @@ class Grid {
     return output.join('');
   }
 
+  updateStyle() {
+    for (const row of this.grid) {
+      for (const cell of row) {
+        if (cell.isLinked(cell.north)) {
+          cell.element.style.borderTop = 'none';
+        }
+        if (cell.isLinked(cell.east)) {
+          cell.element.style.borderRight = 'none';
+        }
+        if (cell.isLinked(cell.south)) {
+          cell.element.style.borderBottom = 'none';
+        }
+        if (cell.isLinked(cell.west)) {
+          cell.element.style.borderLeft = 'none';
+        }
+      }
+    }
+  }
+
   [Symbol.iterator]() {
     let index = -1;
     const grid = this.grid;

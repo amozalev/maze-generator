@@ -9,6 +9,9 @@ class App {
     this.grid = new Grid(9, 9);
     const bt = new BinaryTree(this.grid);
 
+    console.log(this.grid.toString());
+    this.grid.updateStyle();
+
     this.render();
   }
 
